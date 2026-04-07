@@ -17,3 +17,6 @@ steps:
 
 substitutions:
   _ENV: dev   # default
+
+options:
+  logging: CLOUD_LOGGING_ONLY
