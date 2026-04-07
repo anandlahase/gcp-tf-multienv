@@ -1,12 +1,19 @@
 steps:
+  # Init
   - name: hashicorp/terraform:latest
-    args: ["init"]
+    args: ["-chdir=env/${_ENV}", "init"]
 
+  # Validate
   - name: hashicorp/terraform:latest
-    args: ["validate"]
+    args: ["-chdir=env/${_ENV}", "validate"]
 
+  # Plan
   - name: hashicorp/terraform:latest
-    args: ["plan", "-out=tfplan"]
+    args: ["-chdir=env/${_ENV}", "plan", "-out=tfplan"]
 
+  # Apply
   - name: hashicorp/terraform:latest
-    args: ["apply", "-auto-approve", "tfplan"]
+    args: ["-chdir=env/${_ENV}", "apply", "-auto-approve", "tfplan"]
+
+substitutions:
+  _ENV: dev   # default
