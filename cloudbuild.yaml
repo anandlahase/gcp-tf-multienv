@@ -14,11 +14,11 @@ steps:
   # 4. Security Scan (Checkov)
   - name: bridgecrew/checkov
     args:
-    [
-      "-d", "env/${_ENV}",
-      "--quiet",
-      "--check", "MEDIUM,HIGH,CRITICAL"
-    ]
+    - "-d"
+    - "env/${_ENV}"
+    - "--quiet"
+    - "--check"
+    - "MEDIUM,HIGH,CRITICAL"
 
   # 5. Plan
   - name: hashicorp/terraform:latest
