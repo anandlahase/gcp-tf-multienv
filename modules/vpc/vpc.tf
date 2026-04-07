@@ -14,4 +14,5 @@ resource "google_compute_subnetwork" "subnet" {
     flow_sampling        = 0.5
     metadata             = "INCLUDE_ALL_METADATA"
   }
+  + private_ip_google_access = true
 }
