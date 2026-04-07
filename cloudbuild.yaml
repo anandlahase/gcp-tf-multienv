@@ -1,19 +1,34 @@
 steps:
-  # Init
+  # 1. Init
   - name: hashicorp/terraform:latest
     args: ["-chdir=env/${_ENV}", "init"]
 
-  # Validate
+  # 2. Format Check
+  - name: hashicorp/terraform:latest
+    args: ["-chdir=env/${_ENV}", "fmt", "-check"]
+
+  # 3. Validate
   - name: hashicorp/terraform:latest
     args: ["-chdir=env/${_ENV}", "validate"]
 
-  # Plan
+  # 4. Security Scan (Checkov)
+  - name: bridgecrew/checkov
+    args: ["-d", "env/${_ENV}"]
+
+  # 5. Plan
   - name: hashicorp/terraform:latest
     args: ["-chdir=env/${_ENV}", "plan", "-out=tfplan"]
 
-  # Apply
+  # 6. Apply (Deploy)
   - name: hashicorp/terraform:latest
-    args: ["-chdir=env/${_ENV}", "apply", "-auto-approve", "tfplan"]
+    args: ["-chdir=env/${_ENV}", "apply", "tfplan"]
+
+# ✅ Save Terraform plan as artifact
+artifacts:
+  objects:
+    location: "gs://tf-plan-bucket/${_ENV}/"
+    paths:
+      - "env/${_ENV}/tfplan"
 
 substitutions:
   _ENV: dev   # default
