@@ -3,7 +3,10 @@ steps:
     args: ["-chdir=env/${_ENV}", "init", "-input=false"]
 
   - name: hashicorp/terraform:latest
-    args: ["-chdir=env/${_ENV}", "fmt", "-check"]
+    entrypoint: sh
+    args:
+      - "-c"
+      - "terraform -chdir=env/${_ENV} fmt -check"
 
   - name: hashicorp/terraform:latest
     args: ["-chdir=env/${_ENV}", "validate"]
