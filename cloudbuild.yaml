@@ -28,7 +28,7 @@ steps:
   - name: hashicorp/terraform:latest
     args: ["-chdir=env/${_ENV}", "apply", "tfplan"]
 
-# ✅ Save Terraform plan as artifact
+# Save Terraform plan as artifact
 artifacts:
   objects:
     location: "gs://tf-plan-bucket/${_ENV}/"
