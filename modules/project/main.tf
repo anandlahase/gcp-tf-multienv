@@ -2,7 +2,7 @@ resource "google_project" "project" {
   name            = var.project_name
   project_id      = var.project_id
   billing_account = var.billing_account
-  folder_id       = var.folder_id
+  folder_id       = "cloudtech-dev-492705"
 }
 
 resource "google_project_service" "apis" {
