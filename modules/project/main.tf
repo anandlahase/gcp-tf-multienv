@@ -2,7 +2,7 @@ resource "google_project" "project" {
   name            = var.project_name
   project_id      = var.project_id
   billing_account = var.billing_account
-  folder_id       = "994119453105"
+  org_id          = "87343181814" 
 }
 
 resource "google_project_service" "apis" {
