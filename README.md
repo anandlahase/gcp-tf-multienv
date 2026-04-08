@@ -1,7 +1,7 @@
 # GCP Landing Zone (Terraform)
 
 ## Environments
-- dev
+- dev - New
 - prod
 
 ## Run Locally
