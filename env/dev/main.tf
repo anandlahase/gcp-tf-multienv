@@ -10,4 +10,5 @@ module "network" {
   source     = "../../modules/network"
   project_id = module.dev_project.project_id
   env        = "dev"
+  region     = var.region
 }
