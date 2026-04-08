@@ -1,3 +1,3 @@
-billing_account = "project-6b580b37-cb64-4d79-bb2"
+billing_account = "0136F6-F22E4F-DF43C6"
 dev_folder_id   = "cloudtech-dev-492705"
 region          = "asia-south1"
