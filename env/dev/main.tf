@@ -1,9 +1,9 @@
 module "dev_project" {
   source          = "../../modules/project"
   project_id      = "cloudtech-dev-492705"
-  project_name    = "Dev Project"
+  project_name    = "cloudtech-dev"
   billing_account = var.billing_account
-  folder_id       = var.dev_folder_id
+  org_id          = var.org_id
 }
 
 module "network" {
