@@ -1,0 +1,47 @@
+steps:
+  - name: hashicorp/terraform:latest
+    args: ["-chdir=env/${_ENV}", "init", "-input=false"]
+
+  - name: hashicorp/terraform:latest
+    entrypoint: sh
+    args:
+      - "-c"
+      - "terraform -chdir=env/${_ENV} fmt -check"
+
+  - name: hashicorp/terraform:latest
+    args: ["-chdir=env/${_ENV}", "validate"]
+
+  - name: bridgecrew/checkov
+    args:
+      - "-d"
+      - "env/${_ENV}"
+      - "--quiet"
+      - "--check"
+      - "MEDIUM,HIGH,CRITICAL"
+
+  - name: hashicorp/terraform:latest
+    args: ["-chdir=env/${_ENV}", "plan", "-out=tfplan"]
+
+  - name: hashicorp/terraform:latest
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        if [ "${_APPLY}" = "true" ]; then
+          terraform -chdir=env/${_ENV} apply tfplan
+        else
+          echo "Skipping apply"
+        fi
+
+artifacts:
+  objects:
+    location: "gs://cloudtech-tf-plan-bucket/${_ENV}/"
+    paths:
+      - "env/${_ENV}/tfplan"
+
+substitutions:
+  _ENV: dev
+  _APPLY: "true"
+
+options:
+  logging: CLOUD_LOGGING_ONLY

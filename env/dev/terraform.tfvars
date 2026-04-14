@@ -1,0 +1,6 @@
+billing_account = "0136F6-F22E4F-DF43C6"
+region          = "asia-south1"
+project_id      = "cloudtech-dev-492705"
+project_name    = "cloudtech-dev"
+org_id          = "87343181814"
+zone            = "asia-south1-a"
