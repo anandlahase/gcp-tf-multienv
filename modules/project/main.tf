@@ -3,6 +3,7 @@ resource "google_project" "project" {
   project_id      = var.project_id
   billing_account = var.billing_account
   org_id          = "87343181814" 
+  deletion_policy = "DELETE"
 }
 
 resource "google_project_service" "apis" {
