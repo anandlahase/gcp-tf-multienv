@@ -13,3 +13,10 @@ variable "org_id" {
   description = "GCP Organization ID"
   type        = string
 }
+
+variable "zone" {
+  description = "GCP zone"
+  type        = string
+}
+
+variable "service_account" {}
