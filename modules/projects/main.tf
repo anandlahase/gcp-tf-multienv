@@ -5,4 +5,5 @@ resource "google_project" "projects" {
   project_id      = "${each.value.name}-${var.random_suffix}"
   folder_id       = var.folder_ids[each.value.folder]
   billing_account = var.billing_account
+  deletion_policy = "DELETE"
 }
