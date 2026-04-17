@@ -1,11 +1,5 @@
-variable "project_id" {
-  type = string
-}
-
-variable "env" {
-  type = string
-}
-
-variable "region" {
-  type = string
+variable "project_id" {}
+variable "region" {}
+variable "subnets" {
+  type = map(string)
 }
