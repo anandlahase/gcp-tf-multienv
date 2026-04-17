@@ -1,7 +1,11 @@
-variable "region" {}
-variable "billing_account" {}
-variable "bootstrap_project" {}
-variable "org_id" {}
-variable "dev_folder_id" {}
-variable "prod_folder_id" {}
-variable "shared_folder_id" {}
+variable "org_id" {
+  type = string
+}
+
+variable "billing_account" {
+  type = string
+}
+
+variable "bootstrap_project_id" {
+  type = string
+}

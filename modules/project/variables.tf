@@ -1,16 +1,10 @@
-variable "project_id" {
-  type = string
+variable "projects" {
+  type = map(object({
+    name   = string
+    folder = string
+  }))
 }
 
-variable "project_name" {
-  type = string
-}
-
-variable "billing_account" {
-  type = string
-}
-
-variable "org_id" {
-  description = "Organization ID"
-  type        = string
-}
+variable "folder_ids" {}
+variable "billing_account" {}
+variable "random_suffix" {}

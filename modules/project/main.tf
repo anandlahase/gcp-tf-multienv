@@ -1,19 +1,8 @@
-resource "google_project" "project" {
-  name            = var.project_name
-  project_id      = var.project_id
+resource "google_project" "projects" {
+  for_each = var.projects
+
+  name            = each.value.name
+  project_id      = "${each.value.name}-${var.random_suffix}"
+  folder_id       = var.folder_ids[each.value.folder]
   billing_account = var.billing_account
-  org_id          = "87343181814" 
-  deletion_policy = "DELETE"
-}
-
-resource "google_project_service" "apis" {
-  for_each = toset([
-    "compute.googleapis.com",
-    "iam.googleapis.com",
-    "logging.googleapis.com",
-    "monitoring.googleapis.com"
-  ])
-
-  project = google_project.project.project_id
-  service = each.key
 }
