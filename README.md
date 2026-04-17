@@ -19,24 +19,24 @@ Uses Cloud Build with:
 
 gcp-tf-multienv/
 │
-├── bootstrap/                     ✅ ORG / Landing Zone (run first)
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── terraform.tfvars
-│   ├── provider.tf
-│   └── outputs.tf
+├── bootstrap/ # ORG / Landing Zone (run first)            ✅ ORG / Landing Zone 
+│ ├── main.tf
+│ ├── variables.tf
+│ ├── terraform.tfvars
+│ ├── provider.tf
+│ └── outputs.tf
 │
-├── env/                           ✅ Workloads (run after bootstrap)
-│   ├── dev/
-│   │   └── main.tf
-│   ├── qa/
-│   │   └── main.tf
-│   └── prod/
-│       └── main.tf
+├── env/ # Workloads (run after bootstrap)                 ✅ Workloads 
+│ ├── dev/
+│ │ └── main.tf
+│ ├── qa/
+│ │ └── main.tf
+│ └── prod/
+│ └── main.tf
 │
-├── modules/                       ✅ Reusable modules
-│   ├── project/
-│   ├── network/
-│   └── ...
+├── modules/ # Reusable modules                            ✅ Reusable modules
+│ ├── project/
+│ ├── network/
+│ └── ...
 │
-└── cloudbuild.yaml                ✅ CI/CD
+└── cloudbuild.yaml # CI/CD                                ✅ CI/CD
